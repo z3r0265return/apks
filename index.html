@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>APK Archive</title>
+<style>
+  body {
+    background: #121212;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #1f1f1f;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    user-select: none;
+  }
+  #search {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 6px;
+    border: none;
+  }
+  #apk-list {
+    max-width: 700px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+  .apk-item {
+    background: #222;
+    margin-bottom: 0.8rem;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .apk-item:hover {
+    background: #333;
+  }
+  .apk-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .apk-info {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-top: 0.2rem;
+  }
+</style>
+</head>
+<body>
+
+<header>APK Archive</header>
+<input type="text" id="search" placeholder="Search APKs..." />
+
+<div id="apk-list"></div>
+
+<script>
+const apks = [
+  {
+    name: "com.android.shell_android_11.apk",
+    version: "Android 11",
+    size: "1.2 MB",
+    download: "com.android.shell_android_11.apk"
+  },
+  {
+    name: "PackageInstaller_android_11.apk",
+    version: "Android 11",
+    size: "4.8 MB",
+    download: "PackageInstaller_android_11.apk"
+  },
+  {
+    name: "com.amazon.firelauncher_amazon_hd_8_codenameraspite_twelvegen.apk",
+    version: "Amazon HD 8",
+    size: "3.1 MB",
+    download: "firelauncher.apk"
+  },
+  {
+    name: "QuickStep.apk",
+    version: "Android 11",
+    size: "2.5 MB",
+    download: "QuickStep.apk"
+  },
+];
+
+const list = document.getElementById('apk-list');
+const search = document.getElementById('search');
+
+function displayApks(filter = '') {
+  list.innerHTML = '';
+  const filtered = apks.filter(apk => apk.name.toLowerCase().includes(filter.toLowerCase()));
+  if (filtered.length === 0) {
+    list.innerHTML = '<p style="text-align:center; color:#888;">No APKs found</p>';
+    return;
+  }
+  filtered.forEach(apk => {
+    const item = document.createElement('div');
+    item.className = 'apk-item';
+    item.innerHTML = `
+      <div class="apk-name">${apk.name}</div>
+      <div class="apk-info">Version: ${apk.version} • Size: ${apk.size}</div>
+    `;
+    item.onclick = () => {
+      const url = `https://github.com/yourusername/yourrepo/raw/main/${apk.download}`;
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = apk.download;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+    list.appendChild(item);
+  });
+}
+
+search.addEventListener('input', e => displayApks(e.target.value));
+
+displayApks();
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>APK Archive</title>
+<style>
+  body {
+    background: #121212;
+    color: #eee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #1f1f1f;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    user-select: none;
+  }
+  #search {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 6px;
+    border: none;
+  }
+  #apk-list {
+    max-width: 700px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+  .apk-item {
+    background: #222;
+    margin-bottom: 0.8rem;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .apk-item:hover {
+    background: #333;
+  }
+  .apk-name {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .apk-info {
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-top: 0.2rem;
+  }
+</style>
+</head>
+<body>
+
+<header>APK Archive</header>
+<input type="text" id="search" placeholder="Search APKs..." />
+
+<div id="apk-list"></div>
+
+<script>
+const apks = [
+  {
+    name: "com.android.shell_android_11.apk",
+    version: "Android 11",
+    size: "1.2 MB",
+    download: "com.android.shell_android_11.apk"
+  },
+  {
+    name: "PackageInstaller_android_11.apk",
+    version: "Android 11",
+    size: "4.8 MB",
+    download: "PackageInstaller_android_11.apk"
+  },
+  {
+    name: "com.amazon.firelauncher_amazon_hd_8_codenameraspite_twelvegen.apk",
+    version: "Amazon HD 8",
+    size: "3.1 MB",
+    download: "firelauncher.apk"
+  },
+  {
+    name: "QuickStep.apk",
+    version: "Android 11",
+    size: "2.5 MB",
+    download: "QuickStep.apk"
+  },
+];
+
+const list = document.getElementById('apk-list');
+const search = document.getElementById('search');
+
+function displayApks(filter = '') {
+  list.innerHTML = '';
+  const filtered = apks.filter(apk => apk.name.toLowerCase().includes(filter.toLowerCase()));
+  if (filtered.length === 0) {
+    list.innerHTML = '<p style="text-align:center; color:#888;">No APKs found</p>';
+    return;
+  }
+  filtered.forEach(apk => {
+    const item = document.createElement('div');
+    item.className = 'apk-item';
+    item.innerHTML = `
+      <div class="apk-name">${apk.name}</div>
+      <div class="apk-info">Version: ${apk.version} • Size: ${apk.size}</div>
+    `;
+    item.onclick = () => {
+      const url = `https://github.com/yourusername/yourrepo/raw/main/${apk.download}`;
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = apk.download;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+    list.appendChild(item);
+  });
+}
+
+search.addEventListener('input', e => displayApks(e.target.value));
+
+displayApks();
+</script>
+
+</body>
+</html>
